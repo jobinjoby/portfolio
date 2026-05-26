@@ -8,17 +8,17 @@ function About() {
     {
       icon: 'bi-person-badge',
       title: 'Who I Am',
-      description: 'A career changer with a fresh perspective, combining my previous experience with new technical skills to bring unique solutions to software development.'
+      description:  'A passionate Python Full Stack Developer focused on building responsive, scalable, and user-friendly web applications with modern technologies.'
     },
     {
       icon: 'bi-lightbulb',
       title: 'My Journey',
-      description:  'I discovered my passion for coding and committed myself to learning Python full-stack development through dedicated self-study and projects.'
+      description:   'My coding journey started with curiosity and quickly became a passion. Through projects and continuous learning, I developed strong skills in React, Django, and modern web development.'
     },
     {
       icon: 'bi-rocket-takeoff',
       title: 'My Goal',
-      description: 'To continuously grow as a developer, contribute to meaningful projects, and leverage technology to create impactful solutions that make a difference.'
+      description: 'To create impactful digital experiences, grow as a software developer, and contribute to innovative projects that solve real-world problems.'
     }
   ];
 
@@ -51,10 +51,10 @@ function About() {
         <div className="row mt-5">
           <div className="col-lg-8 mx-auto text-center">
             <p style={{ fontSize: '1.1rem', color: '#b0b0b0', lineHeight: '1.8' }}>
-              I believe that coming from a non-traditional background is my strength. 
-              It allows me to approach problems differently and communicate effectively 
-              with both technical and non-technical stakeholders. I'm committed to 
-              writing clean, maintainable code and constantly improving my skills.
+                I enjoy transforming ideas into modern and interactive web
+              applications. My focus is on creating clean UI designs,
+              scalable backend systems, and smooth user experiences using
+              technologies like React, Django, and REST APIs.
             </p>
           </div>
         </div>

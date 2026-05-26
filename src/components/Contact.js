@@ -1,56 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Contact Section Component
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const [status, setStatus] = useState({
-    loading: false,
-    success: false,
-    error: false
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus({ loading: true, success: false, error: false });
-
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/contact/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (result.status === 'success') {
-        setStatus({ loading: false, success: true, error: false });
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => {
-          setStatus({ loading: false, success: false, error: false });
-        }, 5000);
-      } else {
-        setStatus({ loading: false, success: false, error: true });
-      }
-
-    } catch (error) {
-      console.log('Error:', error);
-      setStatus({ loading: false, success: false, error: true });
-    }
-  };
 
   const contactInfo = [
     {
@@ -60,9 +11,15 @@ function Contact() {
       link: 'mailto:jobinjo973@gmail.com'
     },
     {
+      icon: 'bi-telephone',
+      title: 'Phone',
+      value: '+91 7510487212', 
+      link: 'tel:+917510487212'
+    },
+    {
       icon: 'bi-geo-alt',
       title: 'Location',
-      value: 'kerala',
+      value: 'Kerala, India',
       link: ''
     },
     {
@@ -78,138 +35,58 @@ function Contact() {
       <div className="container">
         <h2 className="section-title">Get In Touch</h2>
 
-        <div className="row g-5">
-          <div className="col-lg-7">
-            <div className="contact-form">
-              <h4 className="mb-4">Send Me a Message</h4>
+        <div className="row justify-content-center">
+          <div className="col-lg-8 text-center">
 
-              {/* Success Message */}
-              {status.success && (
-                <div style={{
-                  background: 'linear-gradient(135deg, #1a4731, #155724)',
-                  color: '#75f7a7',
-                  padding: '15px 20px',
-                  borderRadius: '10px',
-                  marginBottom: '20px',
-                  border: '1px solid #75f7a7'
-                }}>
-                  <i className="bi bi-check-circle me-2"></i>
-                  Message sent successfully! I will get back to you soon. 🎉
-                </div>
-              )}
+            <div className="mb-5">
+              <h4 className="mb-3">Let's Work Together!</h4>
 
-              {/* Error Message */}
-              {status.error && (
-                <div style={{
-                  background: 'linear-gradient(135deg, #4a1a1a, #721c24)',
-                  color: '#f5c6cb',
-                  padding: '15px 20px',
-                  borderRadius: '10px',
-                  marginBottom: '20px',
-                  border: '1px solid #f5c6cb'
-                }}>
-                  <i className="bi bi-exclamation-circle me-2"></i>
-                  Something went wrong. Please try again or email me directly.
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit}>
-                <div className="row">
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="name"
-                      placeholder="Your Name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="email"
-                      placeholder="Your Email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <input
-                  type="text"
-                  className="form-control"
-                  name="subject"
-                  placeholder="Subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                />
-
-                <textarea
-                  className="form-control"
-                  name="message"
-                  rows="5"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                ></textarea>
-
-                <button
-                  type="submit"
-                  className="btn btn-primary-custom mt-3"
-                  disabled={status.loading}
-                  style={{ opacity: status.loading ? 0.7 : 1 }}
-                >
-                  {status.loading ? (
-                    <>
-                      <span className="spinner-border spinner-border-sm me-2" role="status"></span>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <i className="bi bi-send me-2"></i>Send Message
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <div className="col-lg-5">
-            <h4 className="mb-4">Contact Information</h4>
-
-            {contactInfo.map((info, index) => (
-              <a
-                href={info.link}
-                className="contact-info-card text-decoration-none"
-                key={index}
-                target={info.link.startsWith('http') ? '_blank' : '_self'}
-                rel="noreferrer"
-              >
-                <i className={`bi ${info.icon} contact-info-icon`}></i>
-                <div>
-                  <h6 className="mb-1 text-white">{info.title}</h6>
-                  <p className="mb-0" style={{ color: '#b0b0b0' }}>{info.value}</p>
-                </div>
-              </a>
-            ))}
-
-            <div className="mt-4 p-4" style={{
-              background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-              borderRadius: '15px'
-            }}>
-              <h5>Let's Work Together!</h5>
-              <p style={{ color: '#b0b0b0' }}>
+              <p style={{ color: '#b0b0b0', fontSize: '1.1rem' }}>
                 I'm currently available for freelance work and full-time opportunities.
-                If you have a project that needs coding or an idea you'd like to discuss,
-                feel free to reach out!
+                If you have a project idea or job opportunity, feel free to contact me.
               </p>
             </div>
+
+            <div className="row g-4">
+              {contactInfo.map((info, index) => (
+                <div className="col-md-6" key={index}>
+                  <a
+                    href={info.link}
+                    className="contact-info-card text-decoration-none d-flex align-items-center"
+                    target={info.link.startsWith('http') ? '_blank' : '_self'}
+                    rel="noreferrer"
+                    style={{
+                      background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+                      padding: '25px',
+                      borderRadius: '15px',
+                      transition: '0.3s ease',
+                      display: 'block'
+                    }}
+                  >
+                    <i
+                      className={`bi ${info.icon} contact-info-icon`}
+                      style={{
+                        fontSize: '2rem',
+                        color: '#00bfff',
+                        marginRight: '20px'
+                      }}
+                    ></i>
+
+                    <div className="text-start">
+                      <h6 className="mb-1 text-white">{info.title}</h6>
+
+                      <p
+                        className="mb-0"
+                        style={{ color: '#b0b0b0' }}
+                      >
+                        {info.value}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </div>

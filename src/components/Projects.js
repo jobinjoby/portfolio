@@ -85,14 +85,7 @@ function Projects() {
                       <i className="bi bi-github me-2"></i>Code
                     </a>
 
-                    <a
-                      href={project.live}
-                      className="btn btn-primary-custom btn-sm"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="bi bi-box-arrow-up-right me-2"></i>Live
-                    </a>
+                   
                   </div>
                 </div>
               </div>
